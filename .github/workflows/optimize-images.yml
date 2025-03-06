@@ -1,45 +1,39 @@
 name: Optimize Images
+
 on:
   push:
     branches:
       - main
     paths:
-      - "**.gif"
-      - "**.ico"
-      - "**.jpg"
-      - "**.jpeg"
-      - "**.png"
-      - "**.svg"
-      - "**.webp"
+      - "**/*.avif"
+      - "**/*.gif"
+      - "**/*.jpeg"
+      - "**/*.jpg"
+      - "**/*.png"
+      - "**/*.svg"
+      - "**/*.webp"
   workflow_dispatch:
+
 jobs:
   build:
     if: "!startsWith(github.event.head_commit.message, 'chore[github-actions]')"
-    outputs:
-      pr:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - name: Run image optimization
+      - uses: actions/checkout@v4
+      - uses: cadamsdev/image-optimizer-action@v1
         id: optimize_images
-        uses: calibreapp/image-actions@main
         with:
-          compressOnly: true
-          githubToken: ${{ secrets.GITHUB_TOKEN }}
-      - name: Prepare pull request
-        id: prepare_pr
-        uses: mathiasvr/command-output@v2.0.0
-        with:
-          run: |
-            echo "${{ steps.optimize_images.outputs.markdown }}" | tail -n +3
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          debug: true
+          export-webp: true
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v4
-        if: steps.prepare_pr.outputs.stdout != ''
+        if: steps.optimize_images.outputs.markdown_report != ''
+        uses: peter-evans/create-pull-request@v7
         with:
           branch-suffix: timestamp
           delete-branch: true
           title: "[GitHub Actions] Optimize Images"
-          body: ${{ steps.prepare_pr.outputs.stdout }}
+          body: ${{ steps.optimize_images.outputs.markdown_report }}
           commit-message: "chore[github-actions]: optimize images"
           author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
           committer: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
