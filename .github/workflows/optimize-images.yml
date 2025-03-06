@@ -14,8 +14,8 @@ on:
   workflow_dispatch:
 jobs:
   build:
+    if: "!startsWith(github.event.head_commit.message, 'chore[github-actions]')"
     runs-on: ubuntu-latest
-    if: ! startsWith(github.event.head_commit.message, 'chore[github-actions]')
     steps:
       - uses: actions/checkout@v3
       - uses: calibreapp/image-actions@main
