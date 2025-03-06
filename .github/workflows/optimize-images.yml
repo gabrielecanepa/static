@@ -14,20 +14,31 @@ on:
   workflow_dispatch:
 jobs:
   build:
+    if: "!startsWith(github.event.head_commit.message, 'chore[github-actions]')"
+    outputs:
+      pr:
     runs-on: ubuntu-latest
-    if: ! startsWith(github.event.head_commit.message, 'chore[github-actions]')
     steps:
       - uses: actions/checkout@v3
-      - uses: calibreapp/image-actions@main
+      - name: Run image optimization
         id: optimize_images
+        uses: calibreapp/image-actions@main
         with:
           compressOnly: true
           githubToken: ${{ secrets.GITHUB_TOKEN }}
-      - uses: peter-evans/create-pull-request@v4
-        if: steps.optimize_images.outputs.markdown != ''
+      - name: Prepare pull request
+        id: prepare_pr
+        uses: mathiasvr/command-output@v2.0.0
         with:
-          title: "[GitHub Actions] Optimize Images"
+          run: |
+            echo "${{ steps.optimize_images.outputs.markdown }}" | tail -n +3
+      - uses: peter-evans/create-pull-request@v4
+        if: steps.prepare_pr.outputs.stdout != ''
+        with:
           branch-suffix: timestamp
+          delete-branch: true
+          title: "[GitHub Actions] Optimize Images"
+          body: ${{ steps.prepare_pr.outputs.stdout }}
           commit-message: "chore[github-actions]: optimize images"
+          author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
           committer: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
-          body: ${{ steps.optimize_images.outputs.markdown }}
