@@ -32,7 +32,8 @@ jobs:
         with:
           run: |
             echo "${{ steps.optimize_images.outputs.markdown }}" | tail -n +3
-      - uses: peter-evans/create-pull-request@v4
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v4
         if: steps.prepare_pr.outputs.stdout != ''
         with:
           branch-suffix: timestamp
