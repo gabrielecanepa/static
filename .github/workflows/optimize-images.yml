@@ -1,0 +1,33 @@
+name: Optimize Images
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - "**.gif"
+      - "**.ico"
+      - "**.jpg"
+      - "**.jpeg"
+      - "**.png"
+      - "**.svg"
+      - "**.webp"
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    if: ! startsWith(github.event.head_commit.message, 'chore[github-actions]')
+    steps:
+      - uses: actions/checkout@v3
+      - uses: calibreapp/image-actions@main
+        id: optimize_images
+        with:
+          compressOnly: true
+          githubToken: ${{ secrets.GITHUB_TOKEN }}
+      - uses: peter-evans/create-pull-request@v4
+        if: steps.optimize_images.outputs.markdown != ''
+        with:
+          title: "[GitHub Actions] Optimize Images"
+          branch-suffix: timestamp
+          commit-message: "chore[github-actions]: optimize images"
+          committer: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+          body: ${{ steps.optimize_images.outputs.markdown }}
