@@ -1,13 +1,13 @@
 <div align="center">
   <img src="https://raw.gabrielecanepa.com/raw.svg" width="200">
-  <h1></h1>
+  <hr>
   <a href="https://github.com/gabrielecanepa/raw/actions/workflows/optimize-images.yml">
     <img src="https://github.com/gabrielecanepa/raw/actions/workflows/optimize-images.yml/badge.svg">
   </a>
 </div>
 <br>
 
-Versioned static resources delivered at [`raw.gabrielecanepa.com`](https://raw.gabrielecanepa.com) via [Cloudflare Workers](https://workers.cloudflare.com).
+Versioned static resources delivered at `raw.gabrielecanepa.com` via [Cloudflare Workers](https://workers.cloudflare.com).
 
 ## Usage
 
@@ -35,27 +35,27 @@ If a parameter is invalid, the latest version will be used.
 
 ### Examples
 
-Using the asset `avatar-notion.png`:
+Using the asset `avatar-notion.png`.
 
 - Latest version<br>
   https://raw.gabrielecanepa.com/avatar-notion.png<br>
-  <img width="80" src="https://raw.gabrielecanepa.com/avatar-notion.png">
+  <img style="width: 60px; margin-top: 12px" src="https://raw.gabrielecanepa.com/avatar-notion.png">
 
 - Version [`v1`](https://github.com/gabrielecanepa/raw/releases/tag/v1)<br>
   https://raw.gabrielecanepa.com/avatar-notion.png?v=1<br>
-  <img width="80" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=1">
+  <img style="width: 60px; margin-top: 12px" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=1">
 
 - Commit [`b3b3b3b`](https://github.com/gabrielecanepa/raw/commit/b3b3b3b)<br>
   https://raw.gabrielecanepa.com/avatar-notion.png?v=b3b3b3<br>
-  <img width="80" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=b3b3b3b">
+  <img style="width: 60px; margin-top: 12px" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=b3b3b3b">
 
 - Branch [`colorize`]()<br>
   https://raw.gabrielecanepa.com/avatar-notion.png?b=colorize<br>
-  <img width="80" src="https://raw.gabrielecanepa.com/avatar-notion.png?b=colorize">
+  <img style="width: 60px; margin-top: 12px" src="https://raw.gabrielecanepa.com/avatar-notion.png?b=colorize">
 
-- Wrong parameter falling back to latest version<br>
+- Wrong parameter falling back to latest<br>
   https://raw.gabrielecanepa.com/avatar-notion.png?v=wrong<br>
-  <img width="80" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=wrong">
+  <img style="width: 60px; margin-top: 12px" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=wrong">
 
 ## Development
 
