@@ -1,24 +1,38 @@
-## Assets
+<div align="center">
+  <img src="https://raw.gabrielecanepa.com/raw.svg" width="200">
+  <h1></h1>
+  <a href="https://github.com/gabrielecanepa/raw/actions/workflows/optimize-images.yml">
+    <img src="https://github.com/gabrielecanepa/raw/actions/workflows/optimize-images.yml/badge.svg">
+  </a>
+</div>
+<br>
 
-Static assets and resources available at [cdn.gabrielecanepa.com](https://cdn.gabrielecanepa.com).
+Static resources delivered at [`raw.gabrielecanepa.com`](https://cdn.gabrielecanepa.com).
 
-Every asset is identified by a unique filename. Use this URL pattern to link to a resource:
+## Usage
+
+Use this URL pattern to link to a resource in this repository:
 
 ```sh
-https://static.gabrielecanepa.com/{filename}
+https://raw.gabrielecanepa.com/{filename}
 ```
 
-To link to a specific version of a resource, add the commit hash to the URL: 
+To link to a specific version, identified by a tag or commit hash, append the `v` parameter to the URL: 
 
 ```sh
-https://static.gabrielecanepa.com/{commit_hash}/{filename}
+https://raw.gabrielecanepa.com/{filename}?v={tag|commit}
 ```
 
-Examples:
+If not found, the resource will be served from the `main` branch.
 
-- Static file<br>
-  https://static.gabrielecanepa.com/avatar/cartoon.svg
-  ![](https://static.gabrielecanepa.com/avatar/notion4.png)
-- File with commit hash<br>
-  https://static.gabrielecanepa.com/avatar/cartoon.svg
-  ![](https://static.gabrielecanepa.com/avatar/notion4.png)
+### Examples
+
+- Current version<br>
+  https://raw.gabrielecanepa.com/avatar-notion.png
+  ![](https://raw.gabrielecanepa.com/avatar-notion.png)
+- Version at tag [`v1.0.0`](https://github.com/gabrielecanepa/raw/releases/tag/v1.0.0)<br>
+  https://raw.gabrielecanepa.com/avatar-notion.png?v=1.0.0
+  ![](https://raw.gabrielecanepa.com/avatar-notion.png?v=1.0.0)
+- Version at commit [`b3b3b3b`](https://github.com/gabrielecanepa/raw/commit/b3b3b3b)<br>
+  https://raw.gabrielecanepa.com/avatar-notion.png?v=b3b3b3b
+  ![](https://raw.gabrielecanepa.com/avatar-notion.png?v=b3b3b3b)
