@@ -41,17 +41,17 @@ Using the asset `avatar-notion.png`.
   https://raw.gabrielecanepa.com/avatar-notion.png
   <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png"></div>
 
+- Branch [`colorize`](https://github.com/gabrielecanepa/raw/tree/colorize)<br>
+  https://raw.gabrielecanepa.com/avatar-notion.png?b=colorize<br>
+  <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?b=colorize&"></div>
+
+- Commit [`e9546a2`](https://github.com/gabrielecanepa/raw/commit/e9546a2)<br>
+  https://raw.gabrielecanepa.com/avatar-notion.png?v=e9546a2<br>
+  <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=e9546a2"></div>
+
 - Version [`v1`](https://github.com/gabrielecanepa/raw/releases/tag/v1)<br>
   https://raw.gabrielecanepa.com/avatar-notion.png?v=1<br>
   <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=1"></div>
-
-- Commit [`b3b3b3b`](https://github.com/gabrielecanepa/raw/commit/b3b3b3b)<br>
-  https://raw.gabrielecanepa.com/avatar-notion.png?v=b3b3b3<br>
-  <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=b3b3b3b"></div>
-
-- Branch [`colorize`]()<br>
-  https://raw.gabrielecanepa.com/avatar-notion.png?b=colorize<br>
-  <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?b=colorize&"></div>
 
 - Wrong parameter fallback<br>
   https://raw.gabrielecanepa.com/avatar-notion.png?v=wrong<br>
