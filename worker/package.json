@@ -1,0 +1,15 @@
+{
+  "name": "worker",
+  "version": "0.0.0",
+  "packageManager": "pnpm@10.6.1",
+  "scripts": {
+    "prepare": "wrangler types",
+    "dev": "wrangler types | wrangler dev",
+    "deploy": "wrangler deploy"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250303.0",
+    "typescript": "^5.8.2",
+    "wrangler": "^3.114.0"
+  }
+}

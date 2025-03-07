@@ -5,13 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "**/*.avif"
-      - "**/*.gif"
-      - "**/*.jpeg"
-      - "**/*.jpg"
-      - "**/*.png"
-      - "**/*.svg"
-      - "**/*.webp"
+      - lib
   workflow_dispatch:
 
 jobs:

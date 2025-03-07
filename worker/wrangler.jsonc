@@ -1,0 +1,24 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "raw",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-03-03",
+  "observability": {
+    "enabled": true
+  },
+  "assets": {
+    "directory": "public"
+  },
+  "routes": [
+    {
+      "pattern": "raw.gabrielecanepa.com",
+      "custom_domain": true
+    }
+  ],
+  "vars": {
+    "HOST": "raw.githubusercontent.com",
+    "REPO": "gabrielecanepa/raw",
+    "BRANCH": "main",
+    "DIR": "lib"
+  }
+}

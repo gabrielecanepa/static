@@ -1,0 +1,14 @@
+version: 2
+
+updates:
+  - package-ecosystem: npm
+    directory: worker
+    versioning-strategy: increase
+    schedule:
+      interval: weekly
+    labels:
+      - dependencies
+    commit-message:
+      prefix: build
+      prefix-development: build
+      include: scope
