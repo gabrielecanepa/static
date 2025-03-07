@@ -49,9 +49,9 @@ Using the asset `avatar-notion.png`.
   https://raw.gabrielecanepa.com/avatar-notion.png?v=e9546a2<br>
   <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=e9546a2"></div>
 
-- Version [`v1`](https://github.com/gabrielecanepa/raw/releases/tag/v1)<br>
-  https://raw.gabrielecanepa.com/avatar-notion.png?v=1<br>
-  <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=1"></div>
+- Version [`v1.0.1`](https://github.com/gabrielecanepa/raw/releases/tag/v1.0.1)<br>
+  https://raw.gabrielecanepa.com/avatar-notion.png?v=1.0.1<br>
+  <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=1.0.1"></div>
 
 - Wrong parameter fallback<br>
   https://raw.gabrielecanepa.com/avatar-notion.png?v=wrong<br>
@@ -82,18 +82,24 @@ pnpm run deploy
 
 ### Image optimization
 
-Image assets are optimized automatically using [this workflow](https://github.com/gabrielecanepa/raw/actions/workflows/optimize-images.yml). The action also creates a WebP version of new images.
+Image assets are optimized automatically using [this workflow](./.github/workflows/optimize-images.yml). The action also creates a WebP version of new images.
 
 ### Releases
 
-To create a release, push a new tag with the following format:
+To create a release, push a new tag following these conventions:
+
+- Major `v1` - new collection of assets
+- Minor `v1.2` - new or updated assets
+- Patch `v1.2.3` - minor updates to existing resources
+
+For example, to release `v1.0.1`:
 
 ```sh
-git tag -a v2 -m "chore: release v2"
-git push origin v2
+git tag -a v1.0.1 -m "chore: release v1.0.1"
+git push origin v1.0.1
 ```
 
-Create a release on GitHub and upload the new files.
+A GitHub release will be created automatically using [this workflow](./.github/workflows/release.yml).
 
 ## License
 

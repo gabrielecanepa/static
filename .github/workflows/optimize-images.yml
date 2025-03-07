@@ -11,8 +11,10 @@ jobs:
     if: "!startsWith(github.event.head_commit.message, 'chore[github-actions]')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - uses: cadamsdev/image-optimizer-action@v1
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Optimize images
+        uses: cadamsdev/image-optimizer-action@v1
         id: optimize_images
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
@@ -29,3 +31,4 @@ jobs:
           commit-message: "chore[github-actions]: optimize images"
           author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
           committer: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
+          labels: optimization
