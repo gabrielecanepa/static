@@ -51,9 +51,9 @@ Using the asset `avatar-notion.png`.
 
 - Branch [`colorize`]()<br>
   https://raw.gabrielecanepa.com/avatar-notion.png?b=colorize<br>
-  <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?b=colorize"></div>
+  <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?b=colorize&"></div>
 
-- Wrong parameter falling back to latest<br>
+- Wrong parameter fallback<br>
   https://raw.gabrielecanepa.com/avatar-notion.png?v=wrong<br>
   <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=wrong"></div>
 
