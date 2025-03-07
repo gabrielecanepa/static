@@ -2,10 +2,8 @@ name: Optimize Images
 
 on:
   push:
-    branches:
-      - main
     paths:
-      - lib
+      - lib/**/*
   workflow_dispatch:
 
 jobs:
