@@ -39,7 +39,7 @@ Using the asset `avatar-notion.png`.
 
 - Latest version<br>
   https://raw.gabrielecanepa.com/avatar-notion.png
-  <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png"></div>
+  <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?"></div>
 
 - Branch [`colorize`](https://github.com/gabrielecanepa/raw/tree/colorize)<br>
   https://raw.gabrielecanepa.com/avatar-notion.png?b=colorize<br>
@@ -51,7 +51,7 @@ Using the asset `avatar-notion.png`.
 
 - Version [`v1.0.1`](https://github.com/gabrielecanepa/raw/releases/tag/v1.0.1)<br>
   https://raw.gabrielecanepa.com/avatar-notion.png?v=1.0.1<br>
-  <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=1.0.1"></div>
+  <div><img width="60" src="https://raw.gabrielecanepa.com/avatar-notion.png?v=1.0.1&"></div>
 
 - Wrong parameter fallback<br>
   https://raw.gabrielecanepa.com/avatar-notion.png?v=wrong<br>
