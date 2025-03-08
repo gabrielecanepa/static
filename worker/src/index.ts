@@ -17,7 +17,7 @@ export default {
 		}
 
 		if (version) {
-			const path = /^[0-9a-f]{7,40}$/.test(version) ? `/${version}` : `/tags/v${version}`
+			const path = /^[0-9a-f]{7,40}$/.test(version) ? `/${version}` : `/refs/tags/v${version}`
 			const response = await fetch(`${hostname}${path}${pathname}`)
 			if (response.ok) return response
 		}
