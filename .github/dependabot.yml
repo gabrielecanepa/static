@@ -9,6 +9,4 @@ updates:
     labels:
       - dependencies
     commit-message:
-      prefix: build
-      prefix-development: build
-      include: scope
+      prefix: build[dependabot]
