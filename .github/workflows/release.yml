@@ -13,12 +13,51 @@ jobs:
   build:
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags')
+    outputs:
+      body: ${{ steps.build.outputs.body }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+      - name: Build
+        id: build
+        env:
+          HOST: ${{ vars.HOST }}
+          LIB: ${{ vars.LIB }}
+        run: |
+          base_url="https://${{ env.HOST }}"
+          base_download_url="https://github.com/${{ github.repository }}/releases/download"
+          old=$(git tag --list | tail -n 2 | head -n 1)
+          new=$(git tag --list | tail -n 1)
+          diff="$(git diff $old..$new --name-status | grep ${{ env.LIB }})"
+          if [ -z "$diff" ]; then
+            echo "::notice::No changes in the ${{ env.LIB }} folder."
+            exit 0
+          fi
+          n=$(echo "$diff" | wc -l | xargs)
+          body="This release updates **${n}** asset$(if [ "$n" -gt 1 ]; then echo "s"; fi)."
+          body="$body\n\n<table><tr><th>Filename</th><th>Status</th><th><code>$old</code></th><th><code>$new</code></th></tr>"
+          while read d; do
+            l=$(echo "$d" | cut -c1)
+            f=$(echo "${d#"$l"}" | xargs)
+            fn=$(echo "$f" | sed 's/${{ env.LIB }}\///g')
+            case $l in
+              A)
+                body="$body<tr><td><code>$fn</code></td><td>Added</td><td></td><td align=\"center\"><img src=\"$base_url/$fn?v=$new\" width=\"35\"></td></tr>"
+                ;;
+              M)
+                body="$body<tr><td><code>$fn</code></td><td>Modified</td><td align=\"center\"><img src=\"$base_url/$fn?v=$old\" width=\"35\"></td><td align=\"center\"><img src=\"$base_url/$fn?v=$new\" width=\"35\"></td></tr>"
+                ;;
+              D)
+                body="$body<tr><td><code>$fn</code></td><td>Deleted</td><td align=\"center\"><img src=\"$base_url/$fn?v=$old\" width=\"35\"></td><td></td></tr>"
+                ;;
+            esac
+          done <<< "$diff"
+          body="$body</table>"
+          echo "body=$body" >> "$GITHUB_OUTPUT"
       - name: Release
         uses: softprops/action-gh-release@v2
         with:
           make_latest: true
+          body: ${{ steps.build.outputs.body }}
           generate_release_notes: true
           files: lib/*
