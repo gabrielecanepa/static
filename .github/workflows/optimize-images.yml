@@ -25,10 +25,11 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           branch-suffix: timestamp
+          base: main
+          labels: optimization
           delete-branch: true
           title: "[GitHub Actions] Optimize Images"
           body: ${{ steps.optimize_images.outputs.markdown_report }}
           commit-message: "chore[github-actions]: optimize images"
           author: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
           committer: "github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
-          labels: optimization
